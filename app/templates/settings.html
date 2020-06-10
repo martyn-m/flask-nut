@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    {{ summary }}<br>
+    <table class="table table-hover">
+        {% for key in ups_settings %}
+        <tr>
+            <td width="100px">
+                {{ key }}:
+            </td>
+            <td>
+                {{ ups_settings[key] }}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
