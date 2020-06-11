@@ -3,15 +3,21 @@
 {% block app_content %}
     {{ summary }}<br>
     <table class="table table-hover">
-        {% for key in ups_vars %}
         <tr>
-            <td width="100px">
-                {{ key }}:
-            </td>
-            <td>
-                {{ ups_vars[key] }}
-            </td>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Value</th>
+            <th>Type</th>
         </tr>
+        {% for item in ups_vars %}
+        {% if not item['type'].startswith('RW') %}
+        <tr>
+            <td width="100px">{{ item['name'] }}</td>
+            <td>{{ item['description'] }}</td>
+            <td>{{ item['value'] }}</td>
+            <td>{{ item['type'] }}</td>
+        </tr>
+        {% endif %}
         {% endfor %}
     </table>
 {% endblock %}
